@@ -150,6 +150,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvOccupation"
                 tools:text="TextView" />
 
+
             <TextView
                 android:id="@+id/tvSkills"
                 android:layout_width="320dp"

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.signup.SignupStepThreeFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlTopHeader"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivleftArrow"
+            android:layout_width="@dimen/dim20dp"
+            android:layout_height="@dimen/dim20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim15dp"
+            android:src="@drawable/left_arrow"
+            android:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim10dp"
+            android:layout_toRightOf="@+id/ivleftArrow"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dim15dp"
+            android:text="@string/step_3_of_3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlTopHeader"
+        android:padding="@dimen/dim30dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/finally_tell_us_about_why_you_are_here_and_what_you_are_looking_to_accomplish_this_will_be_available_on_your_public_profile"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiUsername"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim30dp"
+                android:hint="@string/bio_tell_us_about_yourself"
+                android:textColorHint="@color/light_black">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text=" "
+                    android:textSize="@dimen/text_normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim20dp"
+                android:hint="@string/why_are_you_here_what_are_you_looking_to_achieve"
+                android:textColorHint="@color/light_black">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:text=" "
+                    android:textSize="@dimen/text_normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim20dp"
+                android:text="@string/and_most_importantly_would_you_like_to_be_a_mentor_or_mentee"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_pirates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/mentor"
+                    android:textColor="@color/colorPrimary" />
+
+                <RadioButton
+                    android:id="@+id/radio_ninjas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim50dp"
+                    android:text="@string/mentee"
+                    android:textColor="@color/colorPrimary" />
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlUserPass"
+                android:layout_marginTop="@dimen/dim30dp"
+                android:background="@drawable/rect_fill_back"
+                android:text="@string/sign_me_up" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

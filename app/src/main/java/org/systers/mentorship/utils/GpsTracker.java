@@ -1,7 +1,8 @@
-package com.example.velmurugan.getcurrentlatitudeandlongitudeandroid;
+package org.systers.mentorship.utils;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,11 +14,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
-class GpsTracker extends Service implements LocationListener {
+import androidx.core.app.ActivityCompat;
+
+public class GpsTracker extends Service implements LocationListener {
     private final Context mContext;
 
     // flag for GPS status
@@ -180,7 +181,7 @@ class GpsTracker extends Service implements LocationListener {
 
         // On pressing Settings button
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
+            public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 mContext.startActivity(intent);
             }

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.fragments.signup.SignupStepOneFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlTopHeader"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivleftArrow"
+            android:layout_width="@dimen/dim20dp"
+            android:layout_height="@dimen/dim20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim15dp"
+            android:src="@drawable/left_arrow"
+            android:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim10dp"
+            android:layout_toRightOf="@+id/ivleftArrow"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dim15dp"
+            android:text="@string/step_1_of_3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlTopHeader"
+        android:padding="@dimen/dim30dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_to_manatee_a_network_of_mentors_who_want_to_help_you_achieve_your_goals"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim20dp"
+                android:text="@string/let_s_get_started"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim15dp"
+                android:text="@string/what_should_we_call_you"
+                android:textColor="@color/blackee"
+                android:textSize="@dimen/text_normal" />
+
+            <RelativeLayout
+                android:id="@+id/rlUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim10dp"
+                android:background="@color/edit_text_backcolor"
+                android:padding="@dimen/dim10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUsernameIcon"
+                    android:layout_width="@dimen/dim20dp"
+                    android:layout_height="@dimen/dim20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/like"
+                    android:tint="@color/light_black" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tiUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim10dp"
+                    android:layout_toRightOf="@+id/ivUsernameIcon"
+                    android:hint="@string/name">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:gravity="clip_vertical"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text=" "
+                        android:textSize="@dimen/text_normal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim15dp"
+                android:text="What's your email address?"
+                android:textColor="@color/blackee"
+                android:textSize="@dimen/text_normal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim10dp"
+                android:background="@color/edit_text_backcolor"
+                android:padding="@dimen/dim10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUserLikeIcon"
+                    android:layout_width="@dimen/dim20dp"
+                    android:layout_height="@dimen/dim20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/like"
+                    android:tint="@color/light_black" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim10dp"
+                    android:layout_toRightOf="@+id/ivUserLikeIcon"
+                    android:hint="@string/email">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:gravity="clip_vertical"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text=" "
+                        android:textSize="@dimen/text_normal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim15dp"
+                android:text="@string/create_a_username"
+                android:textColor="@color/blackee"
+                android:textSize="@dimen/text_normal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim10dp"
+                android:background="@color/edit_text_backcolor"
+                android:padding="@dimen/dim10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUserLike2Icon"
+                    android:layout_width="@dimen/dim20dp"
+                    android:layout_height="@dimen/dim20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/like"
+                    android:tint="@color/light_black" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim10dp"
+                    android:layout_toRightOf="@+id/ivUserLike2Icon"
+                    android:hint="@string/username">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:gravity="clip_vertical"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text=" "
+                        android:textSize="@dimen/text_normal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim15dp"
+                android:text="@string/make_a_secure_password"
+                android:textColor="@color/blackee"
+                android:textSize="@dimen/text_normal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim10dp"
+                android:background="@color/edit_text_backcolor"
+                android:padding="@dimen/dim10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUserLike3Icon"
+                    android:layout_width="@dimen/dim20dp"
+                    android:layout_height="@dimen/dim20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/like"
+                    android:tint="@color/light_black" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim10dp"
+                    android:layout_toRightOf="@+id/ivUserLike3Icon"
+                    android:hint="@string/password">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:gravity="clip_vertical"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text=" "
+                        android:textSize="@dimen/text_normal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim15dp"
+                android:text="@string/let_s_confirm_that_password"
+                android:textColor="@color/blackee"
+                android:textSize="@dimen/text_normal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim10dp"
+                android:background="@color/edit_text_backcolor"
+                android:padding="@dimen/dim10dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUserLike4Icon"
+                    android:layout_width="@dimen/dim20dp"
+                    android:layout_height="@dimen/dim20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/like"
+                    android:tint="@color/light_black" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim10dp"
+                    android:layout_toRightOf="@+id/ivUserLike4Icon"
+                    android:hint="@string/confirm_password">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@null"
+                        android:gravity="clip_vertical"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text=" "
+                        android:textSize="@dimen/text_normal" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlUserPass"
+                android:layout_marginTop="@dimen/dim20dp"
+                android:background="@drawable/rect_fill_back"
+                android:text="@string/next" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

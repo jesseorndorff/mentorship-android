@@ -1,4 +1,4 @@
 package org.systers.mentorship.remote.responses
 
-class FBResponse {
-}
+data class FBResponse(var accessToken: String,
+                      var accessExpiry: Float, var message: String)

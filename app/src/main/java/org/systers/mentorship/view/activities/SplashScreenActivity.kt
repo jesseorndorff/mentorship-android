@@ -29,6 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         runnable = Runnable {
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_inn, R.anim.slide_outt)
             finish()
         }
         handler = Handler()

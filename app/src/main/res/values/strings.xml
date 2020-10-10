@@ -142,8 +142,8 @@
 We engage our community by contributing to open source, collaborating with the global community, and learning/enhancing our coding skills. We are committed to providing a safe, positive online community for our many volunteers that offer their skills, time, and commitment to our projects. </string>
     <string name="about_app">Mentorship System is an application that matches women in tech to mentor each other, on career development, through 1:1 relations during a certain period of time.</string>-->
     <string name="about_systers">Manatee Mentor is a mentor matching system originally developed by Systers, an international community for women in technology. Manatee is based in-part on their open source mentoring system.</string>
-<string name="about_systers_sec">Manatee Mentor is an expansion of their original vision, our goal is to connect young people globally to experienced mentors, who can help coach them through their goals.</string>
-<string name="about_systers_three">Manatee Mentor is a product of Glean Innovation Lab (www.glean.net). We focus on developing technology tools for social good.</string>
+    <string name="about_systers_sec">Manatee Mentor is an expansion of their original vision, our goal is to connect young people globally to experienced mentors, who can help coach them through their goals.</string>
+    <string name="about_systers_three">Manatee Mentor is a product of Glean Innovation Lab (www.glean.net). We focus on developing technology tools for social good.</string>
     <string name="our_github_link">Our Github Link</string>
     <string name="github_repository">Github Repository</string>
     <string name="our_website">Our Website</string>
@@ -203,5 +203,36 @@ We engage our community by contributing to open source, collaborating with the g
     <string name="bug">Bug</string>
     <string name="input"> Please fill in the input fields and/or assign a rating</string>
     <string name="feedback_thank">Thank you for your feedback!</string>
+    <string name="login_facebook">Facebook Login</string>
+
+    <!--   Facebook Login-->
+    <string name="facebook_app_id">370830817263824</string>
+    <string name="fb_login_protocol_scheme">fb370830817263824</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="step_1_of_3">Step 1 of 3</string>
+    <string name="welcome_to_manatee_a_network_of_mentors_who_want_to_help_you_achieve_your_goals">Welcome to Manatee, a network of mentors who want to help you achieve your goals.</string>
+    <string name="let_s_get_started">Let\'s get started!</string>
+    <string name="what_should_we_call_you">What should we call you?</string>
+    <string name="create_a_username">Create a username</string>
+    <string name="make_a_secure_password">Make a secure password.</string>
+    <string name="let_s_confirm_that_password">Let\'s confirm that password.</string>
+    <string name="next">Next</string>
+    <string name="step_2_of_3">Step 2 of 3</string>
+    <string name="great_now_we_d_like_to_understand_what_skills_you_have_that_you_d_like_to_share_with_our_community">Great, now we\'d like to understand what skills you have that you\'d like to share with our community?</string>
+    <string name="finally_tell_us_about_why_you_are_here_and_what_you_are_looking_to_accomplish_this_will_be_available_on_your_public_profile">Finally, tell us about why you are here and what you are looking to accomplish. This will be available on your public profile.</string>
+    <string name="step_3_of_3">Step 3 of 3</string>
+    <string name="bio_tell_us_about_yourself">Bio - Tell us about yourself</string>
+    <string name="why_are_you_here_what_are_you_looking_to_achieve">Why are you here? What are you looking to achieve?</string>
+    <!--<string name="mentor">Mentor</string>-->
+    <!--<string name="mentee">Mentee</string>-->
+    <string name="and_most_importantly_would_you_like_to_be_a_mentor_or_mentee">And most importantly, would you like to be a mentor or mentee?</string>
+    <string name="sign_me_up">SIGN ME UP!</string>
+    <string name="company">Company</string>
+    <string name="skills_upto_5_separated_by_a_comma">Skills (upto 5 separated by a comma)</string>
+    <string name="_mentors">MENTORS</string>
+    <string name="_menetees">MENTEES</string>
+    <string name="_admin">ADMINS</string>
+    <string name="why_are_you_here">Why are you here?</string>
 </resources>
 

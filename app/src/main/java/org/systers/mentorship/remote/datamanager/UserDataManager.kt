@@ -24,6 +24,14 @@ class UserDataManager {
         return apiManager.userService.getVerifiedUsers()
     }
 
+    /** this will get verified users with lat long filter **/
+
+
+    fun getLocationUsers(lat : String , long : String): Observable<List<User>> {
+        return apiManager.userService.getFilteredUsers(lat , long)
+    }
+
+
     /**
      * This will call the getUser method of UserService interface
      * @return an Observable of [User]

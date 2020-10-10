@@ -18,11 +18,11 @@ import org.systers.mentorship.viewmodels.SignUpViewModel
  * This activity will let the user to sign up into the system using name, username,
  * email and password.
  */
-class SignUpActivity : BaseActivity() {
+  class SignUpActivity : BaseActivity() {
 
     private val signUpViewModel by lazy {
-        ViewModelProviders.of(this).get(SignUpViewModel::class.java)
-    }
+        ViewModelProviders.of(this).get(SignUpViewModel::class.java) }
+
     private lateinit var name: String
     private lateinit var username: String
     private lateinit var email: String
@@ -31,10 +31,10 @@ class SignUpActivity : BaseActivity() {
     private var isAvailableToMentor: Boolean = false
     private var needsMentoring: Boolean = false
     private var isAvailableForBoth: Boolean = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
+
         signUpViewModel.successful.observe(this, Observer { successful ->
             hideProgressDialog()
             if (successful != null) {
@@ -42,8 +42,7 @@ class SignUpActivity : BaseActivity() {
                     Toast.makeText(this, signUpViewModel.message, Toast.LENGTH_LONG).show()
                     navigateToLoginActivity()
                 } else {
-                    Snackbar.make(getRootView(), signUpViewModel.message, Snackbar.LENGTH_LONG)
-                            .show()
+                    Snackbar.make(getRootView(), signUpViewModel.message, Snackbar.LENGTH_LONG).show()
                 }
             }
         })
@@ -66,13 +65,20 @@ class SignUpActivity : BaseActivity() {
                 signUpViewModel.register(requestData)
                 showProgressDialog(getString(R.string.signing_up))
             }
-            }
+        }
+
         btnLogin.setOnClickListener {
             navigateToLoginActivity()
         }
+
         cbTC.setOnCheckedChangeListener { _, b ->
             btnSignUp.isEnabled = b
         }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
     override fun onDestroy() {
@@ -89,7 +95,6 @@ class SignUpActivity : BaseActivity() {
         } else {
             tiName.error = null
         }
-
         if (username.isBlank()) {
             tiUsername.error = getString(R.string.error_empty_username)
             isValid = false
@@ -103,7 +108,6 @@ class SignUpActivity : BaseActivity() {
         } else {
             tiEmail.error = null
         }
-
         if (password.isBlank()) {
             tiPassword.error = getString(R.string.error_empty_password)
             isValid = false
@@ -113,7 +117,6 @@ class SignUpActivity : BaseActivity() {
         } else {
             tiPassword.error = null
         }
-
         if (password != confirmedPassword) {
             tiConfirmPassword.error = getString(R.string.error_not_matching_passwords)
             isValid = false
@@ -133,7 +136,6 @@ class SignUpActivity : BaseActivity() {
         } else {
             tvNoteSignUp.visibility = View.GONE
         }
-
         return isValid
     }
 

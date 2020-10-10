@@ -28,6 +28,9 @@ interface UserService {
     @GET("users/verified")
     fun getVerifiedUsers(): Observable<List<User>>
 
+    @GET("users/verified/{lat}/{long}")
+    fun getFilteredUsers(@Path("lat") userLat : String , @Path("long") userLong : String): Observable<List<User>>
+
     /**
      * This function returns a user's public profile of the system
      * @return an observable instance of the [User]

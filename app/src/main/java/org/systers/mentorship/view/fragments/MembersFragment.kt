@@ -1,10 +1,16 @@
 package org.systers.mentorship.view.fragments
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
@@ -14,11 +20,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.app.Activity.RESULT_OK
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.widget.SearchView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_members.*
 import org.systers.mentorship.R
@@ -39,10 +40,21 @@ import org.systers.mentorship.viewmodels.MembersViewModel
  */
 class MembersFragment : BaseFragment() {
 
+    var current_latitude: String? = null
+    var current_longitude: String? = null
+
     companion object {
         /**
          * Creates an instance of [MembersFragment]
          */
+        fun newInstance(latitude: String, longitude: String) = MembersFragment().apply {
+            arguments = Bundle().apply {
+                putString("lat", latitude)
+                putString("long", longitude)
+
+            }
+        }
+
         fun newInstance() = MembersFragment()
     }
 
@@ -58,13 +70,14 @@ class MembersFragment : BaseFragment() {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_members, menu)
         menu.findItem(R.id.search_item)?.let { searchItem ->
-            var searchView=searchItem.actionView as SearchView
-            searchView.queryHint="Search members"
+            var searchView = searchItem.actionView as SearchView
+            searchView.queryHint = "Search members"
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String): Boolean {
                     searchUsers(newText)
                     return false
                 }
+
                 override fun onQueryTextSubmit(query: String): Boolean {
                     return false
                 }
@@ -72,11 +85,11 @@ class MembersFragment : BaseFragment() {
         }
     }
 
-    fun searchUsers(query: String){
-        var userList=mutableListOf<User>()
-        for(user in membersViewModel.userList){
+    fun searchUsers(query: String) {
+        var userList = mutableListOf<User>()
+        for (user in membersViewModel.userList) {
             // ""+ to convert String to CharSequence
-            if ((""+user.username).contains(query, ignoreCase = true)){
+            if (("" + user.username).contains(query, ignoreCase = true)) {
                 userList.add(user)
             }
         }
@@ -86,8 +99,14 @@ class MembersFragment : BaseFragment() {
         }
         tvEmptyList.visibility = View.GONE
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+        current_latitude = arguments!!.getString("lat")
+        current_longitude = arguments!!.getString("long")
+
         setHasOptionsMenu(true)
         rvAdapter = MembersAdapter(listOf(), ::openUserProfile)
         srlMembers.setOnRefreshListener { fetchNewest() }
@@ -145,6 +164,7 @@ class MembersFragment : BaseFragment() {
 
         startActivity(intent, options.toBundle())
     }
+
     private val openUserProfile: (Int) -> Unit =
             { memberId ->
                 val intent = Intent(activity, MemberProfileActivity::class.java)
@@ -186,9 +206,12 @@ class MembersFragment : BaseFragment() {
         REGISTRATION_DATE
     }
 
-    private fun fetchNewest()  {
+    private fun fetchNewest() {
         srlMembers.isRefreshing = true
         membersViewModel.getUsers()
+
+     //TODO
+        // membersViewModel.getFilteredUsers(current_latitude!! , current_longitude!!)
     }
 
 }

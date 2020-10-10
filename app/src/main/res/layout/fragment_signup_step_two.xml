@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.signup.SignupStepTwoFragment">
+
+    <RelativeLayout
+        android:id="@+id/rlTopHeader"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivleftArrow"
+            android:layout_width="@dimen/dim20dp"
+            android:layout_height="@dimen/dim20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim15dp"
+            android:src="@drawable/left_arrow"
+            android:tint="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dim10dp"
+            android:layout_toRightOf="@+id/ivleftArrow"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dim15dp"
+            android:text="@string/step_2_of_3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlTopHeader"
+        android:padding="@dimen/dim30dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/great_now_we_d_like_to_understand_what_skills_you_have_that_you_d_like_to_share_with_our_community"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_normal" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginTop="@dimen/dim30dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlUserPass"
+                android:layout_marginTop="@dimen/dim20dp"
+                android:background="@drawable/rect_fill_back"
+                android:text="@string/next" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

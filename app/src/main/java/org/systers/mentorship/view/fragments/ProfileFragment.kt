@@ -72,7 +72,7 @@ class ProfileFragment : BaseFragment() {
                     fetchNewest()
                 })
 
-               editProfileFragment.show(fragmentManager,
+               editProfileFragment.show(fragmentManager!!,
                         getString(R.string.fragment_title_edit_profile))
                 true
             }

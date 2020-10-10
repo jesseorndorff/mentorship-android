@@ -69,5 +69,49 @@ class MembersViewModel : ViewModel() {
                     }
                 })
     }
+
+
+    /** get users filtered according the the lat long **/
+    @SuppressLint("CheckResult")
+    fun getFilteredUsers(lat : String , long: String) {
+        userDataManager.getLocationUsers(lat , long)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object : DisposableObserver<List<User>>() {
+                    override fun onNext(userListResponse: List<User>) {
+                        userList = userListResponse
+                        successful.value = true
+                    }
+
+                    override fun onError(throwable: Throwable) {
+                        when (throwable) {
+                            is IOException -> {
+                                message = MentorshipApplication.getContext()
+                                        .getString(R.string.error_please_check_internet)
+                            }
+                            is TimeoutException -> {
+                                message = MentorshipApplication.getContext()
+                                        .getString(R.string.error_request_timed_out)
+                            }
+                            is HttpException -> {
+                                message = CommonUtils.getErrorResponse(throwable).message.toString()
+                            }
+                            else -> {
+                                message = MentorshipApplication.getContext()
+                                        .getString(R.string.error_something_went_wrong)
+                                Log.e(tag, throwable.localizedMessage)
+                            }
+                        }
+                        successful.value = false
+                    }
+
+                    override fun onComplete() {
+                    }
+                })
+    }
+
+
+
+
 }
 

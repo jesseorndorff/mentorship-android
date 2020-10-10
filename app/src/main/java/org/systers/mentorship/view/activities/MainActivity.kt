@@ -1,14 +1,20 @@
 package org.systers.mentorship.view.activities
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.PersistableBundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.systers.mentorship.R
+import org.systers.mentorship.utils.GpsTracker
 import org.systers.mentorship.utils.PreferenceManager
 import org.systers.mentorship.view.fragments.*
 
@@ -22,7 +28,8 @@ class MainActivity : BaseActivity() {
     private val TOAST_DURATION = 4000
     private var mLastPress: Long = 0
     private lateinit var exitToast: Toast
-
+    var current_lattude: String? = null
+    var current_longitude : String?=null
     private val preferenceManager: PreferenceManager = PreferenceManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,12 +38,26 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(toolbar)
         toolbar.setTitleTextColor(resources.getColor(R.color.white))
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        try {
+            if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) !== PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
 
         if (savedInstanceState == null) {
             showHomeFragment()
         } else {
             atHome = savedInstanceState.getBoolean("atHome")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getLocation()
+
     }
 
     private val mOnNavigationItemSelectedListener =
@@ -61,7 +82,10 @@ class MainActivity : BaseActivity() {
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.navigation_members -> {
-                        replaceFragment(R.id.contentFrame, MembersFragment.newInstance(),
+
+                        val fragment: Fragment = MembersFragment.newInstance(current_lattude!! , current_longitude!!)
+
+                        replaceFragment(R.id.contentFrame, fragment,
                                 R.string.fragment_title_members)
                         atHome = false
                         return@OnNavigationItemSelectedListener true
@@ -119,6 +143,22 @@ class MainActivity : BaseActivity() {
             showHomeFragment()
         } else {
             showToast()
+        }
+    }
+
+    fun getLocation() {
+        val gpsTracker = GpsTracker(this@MainActivity)
+        if (gpsTracker.canGetLocation()) {
+            val latitude: Double = gpsTracker.latitude
+            val longitude: Double = gpsTracker.longitude
+            current_lattude = latitude.toString()
+          current_longitude =(longitude.toString())
+
+            Log.e("Latitude", current_lattude)
+            Log.e("Longitude", current_longitude)
+
+        } else {
+            gpsTracker.showSettingsAlert()
         }
     }
 }

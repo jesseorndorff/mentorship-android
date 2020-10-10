@@ -11,4 +11,15 @@
     <dimen name="margin_big">32dp</dimen>
     <dimen name="test_size_title">18sp</dimen>
     <dimen name="test_size_title_big">24sp</dimen>
+    <dimen name="text_large">16sp</dimen>
+    <dimen name="text_extra_large">20sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="dim10dp">10dp</dimen>
+    <dimen name="dim5dp">5dp</dimen>
+    <dimen name="dim15dp">15dp</dimen>
+    <dimen name="dim20dp">20dp</dimen>
+    <dimen name="dim25dp">25dp</dimen>
+    <dimen name="dim30dp">30dp</dimen>
+    <dimen name="dim50dp">50dp</dimen>
 </resources>
