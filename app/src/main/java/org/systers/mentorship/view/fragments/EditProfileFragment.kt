@@ -103,7 +103,7 @@ class EditProfileFragment : DialogFragment() {
         isCancelable = false
         return inflater.inflate(R.layout.fragment_edit_profile, container, false)
     }
-
+    
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         editProfileBinding = DataBindingUtil.inflate(LayoutInflater.from(context),
                 R.layout.fragment_edit_profile, null, false)

@@ -19,7 +19,7 @@ import java.io.IOException
 import java.util.concurrent.TimeoutException
 
 /**
- * This class represents the [ViewModel] component used for the Sign Up Activity
+ 0* This class represents the [ViewModel] component used for the Sign Up Activity
  */
 class SignUpViewModel : ViewModel() {
 

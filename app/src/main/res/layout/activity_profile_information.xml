@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    tools:context=".ProfileInformationActiviity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivMenteeImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:src="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Jesse Orndorff"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivMenteeImage" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="I am a technologist for social good"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Profile Information"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserAbout" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="@+id/tvProfileInfo"
+                app:layout_constraintStart_toEndOf="@+id/tvUserAbout"
+                app:layout_constraintTop_toTopOf="@+id/tvProfileInfo" />
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvProfileInfo" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserNameDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/username"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/tvProfileInfo"
+                app:layout_constraintTop_toBottomOf="@+id/v1"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/email"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/tvProfileInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserNameDetail"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/location"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/tvProfileInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tvemail" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOccupation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_ocupation"
+                android:gravity="center"
+                android:text="@string/occupation"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/tvProfileInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_business"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="@string/company"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/tvProfileInfo"
+                app:layout_constraintTop_toBottomOf="@+id/tvOccupation" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="Jesse Omdroff"
+                app:layout_constraintBottom_toBottomOf="@id/tvUserNameDetail"
+                app:layout_constraintStart_toEndOf="@id/tvUserNameDetail"
+                app:layout_constraintTop_toTopOf="@id/tvUserNameDetail" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEmailValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="jessie123@gmail.com"
+                app:layout_constraintBottom_toBottomOf="@id/tvemail"
+                app:layout_constraintStart_toEndOf="@id/tvUserNameDetail"
+                app:layout_constraintTop_toTopOf="@id/tvemail" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLocationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="Seatle WA, USA"
+                app:layout_constraintBottom_toBottomOf="@+id/tvLocation"
+                app:layout_constraintStart_toEndOf="@id/tvUserNameDetail"
+                app:layout_constraintTop_toTopOf="@id/tvLocation" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOccupationValue"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="Director of Innovation"
+                app:layout_constraintBottom_toBottomOf="@id/tvOccupation"
+                app:layout_constraintStart_toEndOf="@id/tvUserNameDetail"
+                app:layout_constraintTop_toTopOf="@id/tvOccupation" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCompanyValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:singleLine="true"
+                android:text="Along Siders"
+                app:layout_constraintBottom_toBottomOf="@id/tvCompany"
+                app:layout_constraintStart_toEndOf="@id/tvUserNameDetail"
+                app:layout_constraintTop_toTopOf="@id/tvCompany" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvCompany">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:buttonTint="#6200EE"
+                    android:checked="false"
+                    android:drawablePadding="0dp"
+                    android:padding="0dp"
+                    android:text="@string/mentor" />
+
+                <RadioButton
+                    android:id="@+id/rbMentee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="35dp"
+                    android:buttonTint="#6200EE"
+                    android:checked="false"
+                    android:drawablePadding="0dp"
+                    android:padding="0dp"
+                    android:text="@string/mentee" />
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSKills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/skills"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            <View
+                android:id="@+id/v2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSKills" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/entry_chip_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="@+id/tvUserAbout"
+                app:layout_constraintTop_toBottomOf="@+id/v2">
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/information"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/entry_chip_group" />
+
+            <View
+                android:id="@+id/v3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInformation" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Dummy text Dummy text Dummy text Dummy  text "
+                app:layout_constraintEnd_toEndOf="@id/v3"
+                app:layout_constraintStart_toStartOf="@id/v3"
+                app:layout_constraintTop_toBottomOf="@id/v3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

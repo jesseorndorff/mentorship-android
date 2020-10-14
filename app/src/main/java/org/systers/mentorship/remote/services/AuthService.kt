@@ -7,6 +7,7 @@ import org.systers.mentorship.remote.requests.Register
 import org.systers.mentorship.remote.responses.AuthToken
 import org.systers.mentorship.remote.responses.CustomResponse
 import org.systers.mentorship.remote.responses.FBResponse
+import org.systers.mentorship.viewmodels.SingUpDataModel
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -30,7 +31,7 @@ interface AuthService {
      */
 
     @POST("oauthcheck")
-    fun fBLoginCheck(@Body fbLogin : FBLogin): Observable<FBResponse>
+    fun fBLoginCheck(@Body fbLogin: FBLogin): Observable<FBResponse>
 
     /**
      * This function allows a user to check whether fb login is registered or not
@@ -38,8 +39,11 @@ interface AuthService {
      * @return an observable instance of the [CustomResponse]
      */
     @POST("oauthlogin")
-    fun fBLoginRegister(@Body fbLogin : FBLogin): Observable<FBResponse>
+    fun fBLoginRegister(@Body fbLogin: FBLogin): Observable<FBResponse>
 
     @POST("register")
-    fun register(@Body register: Register) : Observable<CustomResponse>
+    fun register(@Body register: Register): Observable<CustomResponse>
+
+    @POST("register")
+    fun singUpModel(@Body singUpModel: SingUpDataModel): Observable<CustomResponse>
 }

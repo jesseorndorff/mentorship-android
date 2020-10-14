@@ -21,6 +21,7 @@
             android:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -60,17 +61,20 @@
                 android:textSize="@dimen/text_normal" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSkills"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
-                android:layout_marginTop="@dimen/dim30dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim30dp"
+                android:background="@color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnNextThree"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlUserPass"
                 android:layout_marginTop="@dimen/dim20dp"
+                android:layout_marginBottom="@dimen/dim50dp"
                 android:background="@drawable/rect_fill_back"
                 android:text="@string/next" />
         </androidx.appcompat.widget.LinearLayoutCompat>

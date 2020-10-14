@@ -234,5 +234,19 @@ We engage our community by contributing to open source, collaborating with the g
     <string name="_menetees">MENTEES</string>
     <string name="_admin">ADMINS</string>
     <string name="why_are_you_here">Why are you here?</string>
+    <string name="what_s_your_email_address">What\'s your email address?</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="please_enter_bio">Please enter your bio</string>
+    <string name="please_fill_this_field">Please fill this field</string>
+    <string name="data_not_found">Data Not Found</string>
+    <string name="please_select_skills">Please select skills</string>
+    <string name="plaese_select_atleast_five_skills">Please select at least 5 skills</string>
+
+    <string name="information">Information</string>
+    <string name="mentoring">MENTORING</string>
+    <string name="your_active_mentees">Your Active Mentees</string>
+    <string name="message">MESSAGE</string>
+    <string name="call">CALL</string>
+    <string name="assign_a_task">ASSIGN A TASK</string>
 </resources>
 

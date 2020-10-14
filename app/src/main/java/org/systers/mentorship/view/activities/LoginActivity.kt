@@ -171,7 +171,7 @@ class LoginActivity : BaseActivity() {
         }
 
         btnSignUp.setOnClickListener {
-            intent = Intent(this, SignUpActivity::class.java)
+            intent = Intent(this, RegisterationContainerActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.slide_inn, R.anim.slide_outt)
         }

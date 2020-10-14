@@ -21,6 +21,7 @@
             android:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -69,13 +70,12 @@
                 android:textColorHint="@color/light_black">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etUsername"
+                    android:id="@+id/etUserBio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:text=" "
                     android:textSize="@dimen/text_normal" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,12 +88,12 @@
                 android:textColorHint="@color/light_black">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etUserWhyAreYouHere"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:text=" "
                     android:textSize="@dimen/text_normal" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,7 +113,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radio_pirates"
+                    android:id="@+id/rbMentor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -121,7 +121,7 @@
                     android:textColor="@color/colorPrimary" />
 
                 <RadioButton
-                    android:id="@+id/radio_ninjas"
+                    android:id="@+id/rbMenetee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dim50dp"
@@ -130,7 +130,7 @@
             </RadioGroup>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnRegister"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

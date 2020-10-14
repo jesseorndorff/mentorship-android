@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/grey_curve_layout"
+        android:padding="15dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivMenteeImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMenteeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Steve Jobs"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/ivMenteeImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Seattle, WA"
+            app:layout_constraintStart_toEndOf="@+id/ivMenteeImage"
+            app:layout_constraintTop_toBottomOf="@id/tvMenteeName" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:id="@+id/tvMenteeABout"
+            android:layout_marginTop="10dp"
+            android:text="Dummy text Dummy textDummy textDummy textDummy textDummy textDummy textDummy textDummy textDummy textDummy textDummy text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUserAddress" />
+
+
+        <TextView
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/message"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/tvMenteeABout" />
+
+        <TextView
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvMenteeABout"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/call"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/one"
+           android:layout_marginStart="30dp"
+            app:layout_constraintWidth_percent="0.25" />
+
+
+        <TextView
+            android:id="@+id/three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvMenteeABout"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/assign_a_task"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            app:layout_constraintLeft_toRightOf="@+id/two"
+       />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

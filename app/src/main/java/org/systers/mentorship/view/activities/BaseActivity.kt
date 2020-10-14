@@ -4,18 +4,18 @@ package org.systers.mentorship.view.activities
 
 import android.app.ProgressDialog
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.systers.mentorship.R
 import org.systers.mentorship.utils.ProgressBar
-
 /**
  * An Activity class which other Activities can extend from. It provides some basic functions like
  * showing/hiding progress dialog bars, hiding keyboard etc.
  */
-abstract class BaseActivity: AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     private var progressDialog: ProgressDialog? = null
     private var progressBar: ProgressBar? = null
@@ -65,10 +65,17 @@ abstract class BaseActivity: AppCompatActivity() {
      * The [fragment] is added to the container view with id [containerId]. The operation is
      * performed by the FragmentManager.
      */
-    fun replaceFragment(containerId: Int, fragment: Fragment, title: Int) {
+    public fun replaceFragment(containerId: Int, fragment: Fragment, title: Int) {
         supportFragmentManager.beginTransaction()
                 .replace(containerId, fragment, getString(title)).commit()
         supportActionBar?.setTitle(title)
         collapsingToolbarLayout?.title = getString(title)
     }
+
+
+    fun replaceFragmentWithBackStack(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.contentFrame, fragment).addToBackStack(fragment::getActivity.name).commit()
+    }
+
 }

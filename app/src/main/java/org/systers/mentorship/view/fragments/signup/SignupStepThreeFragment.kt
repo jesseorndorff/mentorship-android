@@ -1,33 +1,35 @@
 package org.systers.mentorship.view.fragments.signup
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.fragment_signup_step_one.*
+import kotlinx.android.synthetic.main.fragment_signup_step_three.*
+import kotlinx.android.synthetic.main.fragment_signup_step_two.*
 import org.systers.mentorship.R
+import org.systers.mentorship.view.activities.LoginActivity
+import org.systers.mentorship.view.activities.RegisterationContainerActivity
+import org.systers.mentorship.viewmodels.RegistraionDataModel
+import org.systers.mentorship.viewmodels.SignUpModel
+import org.systers.mentorship.viewmodels.SingUpDataModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SignupStepThreeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SignupStepThreeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+    private lateinit var registraionDataModel: RegistraionDataModel
+    private var isMentor: Boolean = true
+    private var isMentee: Boolean = false
+
+    private val signUpModel by lazy {
+        ViewModelProviders.of(this).get(SignUpModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,23 +38,81 @@ class SignupStepThreeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_signup_step_three, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        signUpModel.successful.observe(viewLifecycleOwner, Observer { successful ->
+
+            (activity as RegisterationContainerActivity).hideProgressDialog()
+
+            if (successful) {
+                Toast.makeText(activity, signUpModel.message, Toast.LENGTH_SHORT).show()
+                startActivity(Intent(activity, LoginActivity::class.java))
+                activity!!.overridePendingTransition(R.anim.slide_inn, R.anim.slide_outt)
+            } else {
+                Toast.makeText(activity, signUpModel.message, Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+        btnTwo.setOnClickListener {
+            (activity as RegisterationContainerActivity).gotoPreviousFragment()
+        }
+
+
+        btnRegister.setOnClickListener {
+            validateData()
+        }
+    }
+
+    private fun validateData() {
+        val userBio = etUserBio.text.toString().trim()
+        val userWhyAreyouHere = etUserWhyAreYouHere.text.toString().trim()
+
+        if (TextUtils.isEmpty(userBio)) {
+            etUserBio.error = getString(R.string.please_enter_bio)
+            etUserBio.isFocusable = true
+            return
+        }
+
+        if (TextUtils.isEmpty(userWhyAreyouHere)) {
+            etUserWhyAreYouHere.error = getString(R.string.please_fill_this_field)
+            etUserWhyAreYouHere.isFocusable = true
+            return
+        }
+
+        rbMentor.setOnCheckedChangeListener { view, isChecked ->
+            isMentor = isChecked
+            when (isChecked) {
+                true -> {
+                    isMentee = false;
+                }
+            }
+        }
+
+        rbMenetee.setOnCheckedChangeListener { view, isChecked ->
+            isMentee = isChecked
+            when (isChecked) {
+                true -> {
+                    isMentor = false;
+                }
+            }
+        }
+
+        registraionDataModel.bio = userBio
+        registraionDataModel.whyAreYouHere = userWhyAreyouHere
+
+        (activity as RegisterationContainerActivity).showProgressDialog("Processing your request..")
+
+        signUpModel.signUp(SingUpDataModel(registraionDataModel.name, registraionDataModel.username, registraionDataModel.password, registraionDataModel.email, registraionDataModel.skills, registraionDataModel.bio, registraionDataModel.whyAreYouHere, true, isMentee, isMentor))
+
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignupStepThreeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(registraionDataModelData: RegistraionDataModel) =
                 SignupStepThreeFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
+                    registraionDataModel = registraionDataModelData
                 }
     }
 }

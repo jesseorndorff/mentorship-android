@@ -4,10 +4,12 @@ import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.systers.mentorship.models.HomeStatistics
+import org.systers.mentorship.viewmodels.SkillsModel
 import org.systers.mentorship.models.User
 import org.systers.mentorship.remote.ApiManager
 import org.systers.mentorship.remote.requests.ChangePassword
 import org.systers.mentorship.remote.responses.CustomResponse
+import org.systers.mentorship.viewmodels.MentorModel
 
 /**
  * This class represents the data manager related to Users API
@@ -24,6 +26,22 @@ class UserDataManager {
         return apiManager.userService.getVerifiedUsers()
     }
 
+    fun getSkills():Observable<SkillsModel>{
+        return apiManager.userService.getSkills()
+    }
+
+    fun getMentorList():Observable<MentorModel>{
+        return apiManager.userService.getMentors()
+    }
+
+    fun getMeneteeList():Observable<MentorModel>{
+        return apiManager.userService.getMenetee()
+    }
+
+    fun getAdminList():Observable<MentorModel>{
+        return apiManager.userService.getAdminList()
+    }
+
     /** this will get verified users with lat long filter **/
 
 
@@ -31,11 +49,11 @@ class UserDataManager {
         return apiManager.userService.getFilteredUsers(lat , long)
     }
 
-
     /**
      * This will call the getUser method of UserService interface
      * @return an Observable of [User]
      */
+
     fun getUser(userId: Int): Observable<User> {
         return apiManager.userService.getUser(userId)
     }

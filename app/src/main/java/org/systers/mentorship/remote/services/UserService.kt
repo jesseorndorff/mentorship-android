@@ -4,9 +4,11 @@ import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.systers.mentorship.models.HomeStatistics
+import org.systers.mentorship.viewmodels.SkillsModel
 import org.systers.mentorship.models.User
 import org.systers.mentorship.remote.requests.ChangePassword
 import org.systers.mentorship.remote.responses.CustomResponse
+import org.systers.mentorship.viewmodels.MentorModel
 import retrofit2.http.*
 
 /**
@@ -31,6 +33,21 @@ interface UserService {
     @GET("users/verified/{lat}/{long}")
     fun getFilteredUsers(@Path("lat") userLat : String , @Path("long") userLong : String): Observable<List<User>>
 
+    @GET("skills")
+    fun getSkills():Observable<SkillsModel>
+
+    /*
+     This function returns a mentor list of the system
+      @return an observable instance of the MentorModel
+    */
+    @GET("listofmentor")
+    fun getMentors():Observable<MentorModel>
+
+    @GET("listofmentee")
+    fun getMenetee():Observable<MentorModel>
+
+    @GET("listofadmin")
+    fun getAdminList():Observable<MentorModel>
     /**
      * This function returns a user's public profile of the system
      * @return an observable instance of the [User]

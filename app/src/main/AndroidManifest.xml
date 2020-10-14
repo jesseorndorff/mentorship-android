@@ -37,6 +37,10 @@
         <activity
             android:name=".view.activities.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".view.activities.RegisterationContainerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.activities.SignUpActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"

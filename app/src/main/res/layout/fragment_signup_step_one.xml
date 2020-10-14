@@ -21,12 +21,13 @@
             android:tint="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnBackLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/dim10dp"
             android:layout_toRightOf="@+id/ivleftArrow"
-            android:text="@string/sign_up"
+            android:text="@string/login"
             android:textColor="@color/white"
             android:textSize="@dimen/text_normal" />
 
@@ -41,7 +42,7 @@
             android:textSize="@dimen/text_normal" />
     </RelativeLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlTopHeader"
@@ -95,7 +96,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tiUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dim10dp"
                     android:layout_toRightOf="@+id/ivUsernameIcon"
@@ -110,7 +111,7 @@
                         android:gravity="clip_vertical"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:text=" "
+                        android:text="Hanish"
                         android:textSize="@dimen/text_normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dim15dp"
-                android:text="What's your email address?"
+                android:text="@string/what_s_your_email_address"
                 android:textColor="@color/blackee"
                 android:textSize="@dimen/text_normal" />
 
@@ -141,21 +142,22 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dim10dp"
                     android:layout_toRightOf="@+id/ivUserLikeIcon"
                     android:hint="@string/email">
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etUserEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@null"
                         android:gravity="clip_vertical"
                         android:inputType="text"
+                        android:text="hani@textmail.com"
                         android:maxLines="1"
-                        android:text=" "
                         android:textSize="@dimen/text_normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,21 +188,22 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dim10dp"
                     android:layout_toRightOf="@+id/ivUserLike2Icon"
                     android:hint="@string/username">
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etUserUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@null"
                         android:gravity="clip_vertical"
                         android:inputType="text"
+                        android:text="hanis@user"
                         android:maxLines="1"
-                        android:text=" "
                         android:textSize="@dimen/text_normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,21 +234,22 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dim10dp"
                     android:layout_toRightOf="@+id/ivUserLike3Icon"
                     android:hint="@string/password">
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@null"
                         android:gravity="clip_vertical"
-                        android:inputType="text"
+                        android:inputType="textPassword"
                         android:maxLines="1"
-                        android:text=" "
+                        android:text="123"
                         android:textSize="@dimen/text_normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -276,35 +280,37 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dim10dp"
                     android:layout_toRightOf="@+id/ivUserLike4Icon"
                     android:hint="@string/confirm_password">
 
                     <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etConfPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="@null"
                         android:gravity="clip_vertical"
-                        android:inputType="text"
+                        android:inputType="textPassword"
                         android:maxLines="1"
-                        android:text=" "
+                        android:text="123"
                         android:textSize="@dimen/text_normal" />
                 </com.google.android.material.textfield.TextInputLayout>
             </RelativeLayout>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnStepTwo"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlUserPass"
                 android:layout_marginTop="@dimen/dim20dp"
+                android:layout_marginBottom="@dimen/dim50dp"
                 android:background="@drawable/rect_fill_back"
                 android:text="@string/next" />
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </RelativeLayout>

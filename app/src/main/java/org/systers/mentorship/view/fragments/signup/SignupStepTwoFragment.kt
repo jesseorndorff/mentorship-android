@@ -1,33 +1,34 @@
 package org.systers.mentorship.view.fragments.signup
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_signup_step_two.*
 import org.systers.mentorship.R
+import org.systers.mentorship.view.activities.RegisterationContainerActivity
+import org.systers.mentorship.view.adapters.SkillsAdapter
+import org.systers.mentorship.viewmodels.RegistraionDataModel
+import org.systers.mentorship.viewmodels.SignUpModel
+import org.systers.mentorship.viewmodels.SkillsBean
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SignupStepTwoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SignupStepTwoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SignupStepTwoFragment() : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private lateinit var skAdapter: SkillsAdapter;
+    private lateinit var registraionDataModel: RegistraionDataModel
+    private lateinit var skillBeanList: MutableList<SkillsBean>
+
+    private val skillsViewModel by lazy {
+        ViewModelProviders.of(this).get(SignUpModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -36,23 +37,88 @@ class SignupStepTwoFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_signup_step_two, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignupStepTwoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                SignupStepTwoFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        skAdapter = SkillsAdapter(arrayListOf(), activity!!)
+        skillBeanList = arrayListOf()
+        skillsViewModel.successful.observe(viewLifecycleOwner, Observer { successful ->
+            (activity as RegisterationContainerActivity).hideProgressDialog()
+            if (successful != null) {
+                val skillsModel: List<String> = skillsViewModel.skillsModel!!.skills.split(",")
+                skillBeanList.clear()
+                for (i in skillsModel.indices) {
+                    skillBeanList.add(SkillsBean(skillsModel[i], false))
+                }
+                skAdapter.setData(skillBeanList)
+                rvSkills.apply {
+                    layoutManager = GridLayoutManager(context, 2)
+                    adapter = SkillsAdapter(skillBeanList, context)
+                    runLayoutAnimation(this)
+                    adapter = skAdapter
+                }
+            }
+        })
+
+        getSkillsData()
+
+        btnOne.setOnClickListener {
+            (activity as RegisterationContainerActivity).gotoPreviousFragment()
+        }
+
+        btnNextThree.setOnClickListener {
+
+            val selectedSkillsData = skAdapter.getSelectedSkillsData()
+            var skills: String = ""
+
+            for (i in selectedSkillsData.indices) {
+                if (selectedSkillsData[i].selected) {
+                    if (TextUtils.isEmpty(skills)) {
+                        skills = selectedSkillsData[i].skill
+                    } else {
+                        skills += "," + selectedSkillsData[i].skill
                     }
                 }
+            }
+
+            if (TextUtils.isEmpty(skills)) {
+                Toast.makeText(activity, getString(R.string.please_select_skills), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val split = skills.split(",")
+            if (split.size < 5) {
+                Toast.makeText(activity, getString(R.string.plaese_select_atleast_five_skills), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            registraionDataModelData.skills = skills
+
+            (activity as RegisterationContainerActivity).replaceSignUpFragmentWithBackStack(SignupStepThreeFragment.newInstance(registraionDataModelData))
+
+        }
     }
+
+    private fun getSkillsData() {
+        (activity as RegisterationContainerActivity).showProgressDialog(getString(R.string.please_wait))
+        skillsViewModel.skills()
+    }
+
+    private fun runLayoutAnimation(recyclerView: RecyclerView) {
+        val context = recyclerView.context
+        recyclerView.layoutAnimation = AnimationUtils.loadLayoutAnimation(context,
+                R.anim.layout_fall_down)
+        recyclerView.adapter?.notifyDataSetChanged()
+        recyclerView.scheduleLayoutAnimation()
+    }
+
+    companion object {
+        lateinit var registraionDataModelData: RegistraionDataModel
+
+        @JvmStatic
+        fun newInstance(registraionDataModel: RegistraionDataModel) =
+                SignupStepTwoFragment().apply {
+                    registraionDataModelData = registraionDataModel
+                }
+    }
+
 }

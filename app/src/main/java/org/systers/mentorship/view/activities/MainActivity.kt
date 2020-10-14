@@ -18,18 +18,15 @@ import org.systers.mentorship.utils.GpsTracker
 import org.systers.mentorship.utils.PreferenceManager
 import org.systers.mentorship.view.fragments.*
 
-/**
- * This activity has the bottom navigation which allows the user to switch between fragments
- */
+
 class MainActivity : BaseActivity() {
 
     private var atHome = true
-
     private val TOAST_DURATION = 4000
     private var mLastPress: Long = 0
     private lateinit var exitToast: Toast
     var current_lattude: String? = null
-    var current_longitude : String?=null
+    var current_longitude: String? = null
     private val preferenceManager: PreferenceManager = PreferenceManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +42,6 @@ class MainActivity : BaseActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
 
         if (savedInstanceState == null) {
             showHomeFragment()
@@ -64,7 +60,7 @@ class MainActivity : BaseActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.navigation_home -> {
-                        replaceFragment(R.id.contentFrame, HomeFragment.newInstance(),
+                        replaceFragment(R.id.contentFrame, HomeFragment(),
                                 R.string.fragment_title_home)
                         atHome = true
                         return@OnNavigationItemSelectedListener true
@@ -83,7 +79,7 @@ class MainActivity : BaseActivity() {
                     }
                     R.id.navigation_members -> {
 
-                        val fragment: Fragment = MembersFragment.newInstance(current_lattude!! , current_longitude!!)
+                        val fragment: Fragment = MembersFragment.newInstance(current_lattude!!, current_longitude!!)
 
                         replaceFragment(R.id.contentFrame, fragment,
                                 R.string.fragment_title_members)
@@ -152,8 +148,7 @@ class MainActivity : BaseActivity() {
             val latitude: Double = gpsTracker.latitude
             val longitude: Double = gpsTracker.longitude
             current_lattude = latitude.toString()
-          current_longitude =(longitude.toString())
-
+            current_longitude = (longitude.toString())
             Log.e("Latitude", current_lattude)
             Log.e("Longitude", current_longitude)
 

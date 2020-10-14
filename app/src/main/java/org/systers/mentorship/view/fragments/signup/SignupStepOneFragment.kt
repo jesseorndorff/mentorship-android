@@ -1,58 +1,88 @@
 package org.systers.mentorship.view.fragments.signup
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_signup_step_one.*
 import org.systers.mentorship.R
+import org.systers.mentorship.utils.CommonUtils
+import org.systers.mentorship.view.activities.RegisterationContainerActivity
+import org.systers.mentorship.viewmodels.RegistraionDataModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SignupStepOneFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SignupStepOneFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var registraionDataModel: RegistraionDataModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_signup_step_one, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignupStepOneFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                SignupStepOneFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btnStepTwo.setOnClickListener { validateData() }
+        btnBackLogin.setOnClickListener { (activity as RegisterationContainerActivity).onBackPressed() }
+    }
+
+    private fun validateData() {
+        val name = etUsername.text.toString().trim()
+        val userEmail = etUserEmail.text.toString().trim()
+        val userName = etUserUserName.text.toString().trim()
+        val password = etPassword.text.toString().trim()
+        val confPassword = etConfPassword.text.toString().trim()
+
+        if (TextUtils.isEmpty(name)) {
+            etUsername.error = getString(R.string.error_empty_username)
+            etUsername.isFocusable = true
+            return
+        }
+
+        if (TextUtils.isEmpty(userEmail)) {
+            etUserEmail.error = getString(R.string.error_empty_email)
+            etUserEmail.isFocusable = true
+            return
+        }
+
+        if (!CommonUtils.isValidEmail(userEmail)) {
+            etUserEmail.error = getString(R.string.valid_error)
+            etUserEmail.isFocusable = true
+            return
+        }
+
+        if (TextUtils.isEmpty(userName)) {
+            etUserUserName.error = getString(R.string.error_empty_username)
+            etUserUserName.isFocusable = true
+            return
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            etPassword.error = getString(R.string.error_empty_password)
+            etPassword.isFocusable = true
+            return
+        }
+
+        if (password.length < 8) {
+            etPassword.error = "Password should be contain 8 characters"
+            etPassword.isFocusable = true
+            return
+        }
+
+        if (TextUtils.isEmpty(confPassword)) {
+            etConfPassword.error = getString(R.string.error_empty_password_confirmation)
+            etConfPassword.isFocusable = true
+            return
+        }
+
+        if (password != confPassword) {
+            etConfPassword.error = getString(R.string.password_not_match)
+            etConfPassword.isFocusable = true
+            return
+        }
+
+        registraionDataModel = RegistraionDataModel(name, userEmail, userName, password, "", "", "")
+        (activity as RegisterationContainerActivity).replaceSignUpFragmentWithBackStack(SignupStepTwoFragment.newInstance(registraionDataModel))
     }
 }
